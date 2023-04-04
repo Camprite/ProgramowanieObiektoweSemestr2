@@ -30,18 +30,18 @@ public class main {
             System.out.println(ex);}
         }while(!validationOfInputScanner);
         for(int i = a; i<b;i++){
-//            if(Liczby.isPerfectNumbers(i)){
-//                plik.write(i+" ");
-//            }
+            if(Liczby.isPerfectNumbers(i)){
+                plik.write(i+" \n");
+            }
 //            if(Liczby.isArmstrongNumber(i)){
 //                plik.write(i+" ");
 //            }
 //            if(Liczby.isFibbonacciNumber(i)){
 //                plik.write(i+" ");
 //            }
-            if(Liczby.isHappyNumber(i)){
-                plik.write(i+" ");
-            }
+//            if(Liczby.isHappyNumber(i)){
+//                plik.write(i+" ");
+//            }
         }
 
 
