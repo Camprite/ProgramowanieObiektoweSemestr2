@@ -23,10 +23,14 @@ public class zadanie2 {
         kierownicy.add(kier2);
 
 
-        String filename = "Lab7Zadanie2/src/pracownicy.ser";
-        savingToFile.zapisz(filename,pracownicy,false);
-//        savingToFile.zapisz(filename,kierownicy,true);
-        savingToFile.odczyt(filename);
+        String filenameKier = "Lab7Zadanie2/src/Kierownicy.ser";
+        String filenamePrac = "Lab7Zadanie2/src/Pracownicy.ser";
+        savingToFile.zapisz(filenameKier,kierownicy,false);
+        savingToFile.zapisz(filenamePrac,pracownicy,false);
+        System.out.println("----------------KIEROWNICY--KIEROWNICY--KIEROWNICY--KIEROWNICY--KIEROWNICY--KIEROWNICY---------------");
+        savingToFile.readKierownik(filenameKier);
+        System.out.println("----------------PRACOWNICY--PRACOWNICY--PRACOWNICY--PRACOWNICY--PRACOWNICY--PRACOWNICY---------------");
+        savingToFile.readPracownik(filenamePrac);
 //        prac1.wyswietlDane();
     }
 }
