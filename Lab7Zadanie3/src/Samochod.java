@@ -1,6 +1,7 @@
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class Samochod {
+public class Samochod implements Serializable {
     private String marka;
     private String model;
     private String nadwozie;
@@ -61,6 +62,15 @@ public class Samochod {
 
                 }
         }
+    }
+    public void Wypisz(){
+        System.out.println("--------Samochod----------");
+        System.out.println(this.marka);
+        System.out.println(this.model);
+        System.out.println(this.kolor);
+        System.out.println(this.nadwozie);
+        System.out.println(this.przebieg);
+        System.out.println(this.rok_produkcji);
     }
 
 }
