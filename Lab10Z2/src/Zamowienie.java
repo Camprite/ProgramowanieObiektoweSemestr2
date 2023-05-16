@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Zamowienie {
+public class Zamowienie implements Serializable {
     private Sklep sklep;
     private Dostawca dostawca;
     private ArrayList<ZamowionyProdukt> zamowioneProdukty = new  ArrayList<ZamowionyProdukt>();

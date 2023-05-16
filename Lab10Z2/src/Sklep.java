@@ -1,4 +1,6 @@
-public class Sklep {
+import java.io.Serializable;
+
+public class Sklep implements Serializable {
     private String nazwa;
     private String adres;
     private Obszar obszar;

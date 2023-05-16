@@ -1,4 +1,6 @@
-public class Dostawca {
+import java.io.Serializable;
+
+public class Dostawca implements Serializable {
     private String imie;
     private String nazwisko;
     private Obszar obszar;

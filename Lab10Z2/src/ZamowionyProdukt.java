@@ -1,4 +1,6 @@
-public class ZamowionyProdukt {
+import java.io.Serializable;
+
+public class ZamowionyProdukt  implements Serializable {
     int iloscZamowienia;
     Produkt produkt;
     public ZamowionyProdukt(Produkt produkt,int iloscZamowienia) throws Exception {

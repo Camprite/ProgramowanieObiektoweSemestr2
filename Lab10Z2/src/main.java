@@ -1,4 +1,4 @@
-
+import java.io.*;
 
 public class main {
     public static void main(String[] args) throws Exception {
@@ -39,10 +39,36 @@ public class main {
         zamowienie1.dodajPrzedmiotDoZamowienia(produkt2,5);
         zamowienie1.dodajPrzedmiotDoZamowienia(produkt6,3);
         cukiernia.zlozZamowienie(zamowienie1);
-        System.out.println("wartosc zamowienia:");
-        System.out.println(zamowienie1.wartoscZamowienia());
-        System.out.println("INFO O TOWARACH:");
-        zamowienie1.informacjeOTowarach();
+//        System.out.println("wartosc zamowienia:");
+//        System.out.println(zamowienie1.wartoscZamowienia());
+//        System.out.println("INFO O TOWARACH:");
+//        zamowienie1.informacjeOTowarach();
+
+//        ----ZapisDoPliku-----
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("cukiernia.ser")));
+        out.writeObject(cukiernia);
+        ObjectOutputStream out1 = new ObjectOutputStream(new FileOutputStream(new File("sklepy.ser")));
+        out1.writeObject(sklep1);
+        out1.writeObject(sklep2);
+        out1.writeObject(sklep3);
+        out1.writeObject(sklep4);
+        out1.writeObject(sklep5);
+        ObjectOutputStream out2 = new ObjectOutputStream(new FileOutputStream(new File("dostawcy.ser")));
+        out2.writeObject(dostawca1);
+        out2.writeObject(dostawca2);
+        out2.writeObject(dostawca3);
+        out.close();
+        out1.close();
+        out2.close();
+
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("cukiernia.ser")));
+        ObjectInputStream in1 = new ObjectInputStream(new FileInputStream(new File("sklepy.ser")));
+        ObjectInputStream in2 = new ObjectInputStream(new FileInputStream(new File("dostawcy.ser")));
+        System.out.println("CUKIERNIA Z PLIKU");
+        Cukiernia cukierniaIn = (Cukiernia) in.readObject();
+
+        cukierniaIn.wypiszZamownienia();
+
 
     }
 }

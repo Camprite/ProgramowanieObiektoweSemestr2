@@ -1,9 +1,11 @@
+import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cukiernia {
+public class Cukiernia implements Serializable {
     private String nazwa;
     private ArrayList<Produkt> produkty = new ArrayList<Produkt>();
-    public ArrayList<Zamowienie> zamowienia = new ArrayList<Zamowienie>();
+    protected ArrayList<Zamowienie> zamowienia = new ArrayList<Zamowienie>();
     public Cukiernia(String nazwa){
         this.nazwa = nazwa;
     }
@@ -42,5 +44,15 @@ public class Cukiernia {
             }
 
         }
+    }
+    public void wypiszZamownienia(){
+        for (Zamowienie zam: zamowienia) {
+            System.out.println("Informacje o towarach");
+    zam.informacjeOTowarach();
+            System.out.println("Wartosc zamowienia");
+            System.out.println(zam.wartoscZamowienia());
+
+        }
+
     }
 }
