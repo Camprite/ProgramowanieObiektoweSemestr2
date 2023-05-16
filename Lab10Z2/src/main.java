@@ -1,7 +1,9 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) throws Exception {
+        ArrayList<Zamowienie> podliczanieZamowien = new ArrayList<Zamowienie>();
         Obszar obszar1 = new Obszar("Wschod");
         Obszar obszar2 = new Obszar("Zachod");
         Obszar obszar3 = new Obszar("Polnoc");
@@ -34,17 +36,22 @@ public class main {
         cukiernia.addProdukt(produkt5,5);
         cukiernia.addProdukt(produkt6,5);
 
+        cukiernia.dodajDostawce(dostawca1);
+
         Zamowienie zamowienie1 = new Zamowienie(sklep1,dostawca1);
         zamowienie1.dodajPrzedmiotDoZamowienia(produkt1,3);
         zamowienie1.dodajPrzedmiotDoZamowienia(produkt2,5);
         zamowienie1.dodajPrzedmiotDoZamowienia(produkt6,3);
         cukiernia.zlozZamowienie(zamowienie1);
-//        System.out.println("wartosc zamowienia:");
-//        System.out.println(zamowienie1.wartoscZamowienia());
-//        System.out.println("INFO O TOWARACH:");
-//        zamowienie1.informacjeOTowarach();
+
+        System.out.println("wartosc zamowienia:");
+        System.out.println(zamowienie1.wartoscZamowienia());
+        System.out.println("INFO O TOWARACH:");
+        zamowienie1.informacjeOTowarach();
+        podliczanieZamowien.add(zamowienie1);
 
 //        ----ZapisDoPliku-----
+        try{
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("cukiernia.ser")));
         out.writeObject(cukiernia);
         ObjectOutputStream out1 = new ObjectOutputStream(new FileOutputStream(new File("sklepy.ser")));
@@ -67,7 +74,16 @@ public class main {
         System.out.println("CUKIERNIA Z PLIKU");
         Cukiernia cukierniaIn = (Cukiernia) in.readObject();
 
-        cukierniaIn.wypiszZamownienia();
+        cukierniaIn.wypiszZamownienia();}
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+        System.out.println("------------SUMA DLA DOSTAWCY---------");
+        System.out.println(wszystkieZamownieniaDla.dostawcy(dostawca2,podliczanieZamowien));
+        System.out.println(wszystkieZamownieniaDla.dostawcy(dostawca1,podliczanieZamowien));
+        System.out.println("------------SUMA DLA SKLEPU---------");
+        System.out.println(wszystkieZamownieniaDla.firmy(sklep1,podliczanieZamowien));
 
 
     }

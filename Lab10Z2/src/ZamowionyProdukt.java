@@ -6,7 +6,7 @@ public class ZamowionyProdukt  implements Serializable {
     public ZamowionyProdukt(Produkt produkt,int iloscZamowienia) throws Exception {
         this.produkt = produkt;
         if (produkt.getIlosc()<iloscZamowienia) {
-            throw new Exception("Brak wystarczającej ilosci towwru");
+            throw new Exception("Brak wystarczającej ilosci towaru");
         }
             else{
                 this.iloscZamowienia = iloscZamowienia;

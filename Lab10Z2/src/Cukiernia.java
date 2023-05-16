@@ -25,6 +25,18 @@ public class Cukiernia implements Serializable {
         zamowienia.add(zamowienie);
         ArrayList<ZamowionyProdukt> zamProd = zamowienie.getZamowioneProdukty();
 
+        ArrayList<String> firmy = zamowienie.getDostawca().getFirma();
+        boolean czyZawieraFirme = false;
+        for (String firma: firmy) {
+            if(firma==this.nazwa){
+                czyZawieraFirme = true;
+            }
+
+        }
+        if(czyZawieraFirme == false){
+            throw new Exception("DOSTAWCA NIE NALEZY DO DANEJ FIRMY");
+        }
+
             boolean czyZmienione = false;
             for (ZamowionyProdukt zamowionyProdukt: zamProd
                  ) {
@@ -44,6 +56,10 @@ public class Cukiernia implements Serializable {
             }
 
         }
+    }
+    public void dodajDostawce(Dostawca dostawca){
+        dostawca.setFirma(this.nazwa);
+
     }
     public void wypiszZamownienia(){
         for (Zamowienie zam: zamowienia) {

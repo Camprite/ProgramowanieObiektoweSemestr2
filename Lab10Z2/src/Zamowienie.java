@@ -10,6 +10,14 @@ public class Zamowienie implements Serializable {
         return zamowioneProdukty;
     }
 
+    public Sklep getSklep() {
+        return sklep;
+    }
+
+    public Dostawca getDostawca() {
+        return dostawca;
+    }
+
     public Zamowienie(Sklep sklep, Dostawca dostawca) throws Exception {
         this.sklep = sklep;
         this.dostawca = dostawca;

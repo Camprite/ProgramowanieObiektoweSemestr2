@@ -12,6 +12,7 @@ public class Sklep implements Serializable {
 
     }
 
+
     public Obszar getObszar() {
         return obszar;
     }
