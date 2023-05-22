@@ -1,4 +1,6 @@
-public class Typ {
+import java.io.Serializable;
+
+public class Typ implements Serializable {
 private String nazwa;
     public Typ(String nazwa){
     this.nazwa = nazwa;
@@ -7,4 +9,5 @@ private String nazwa;
     public String getNazwa() {
         return nazwa;
     }
+
 }
