@@ -3,16 +3,22 @@ import java.security.SecureRandomParameters;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class Bank implements Serializable {
-    private String nazwa;
-    private Adres adres;
+public class Bank extends Budynek implements Serializable  {
     private ArrayList<Sklep> sklepy = new ArrayList<Sklep>();
     private ArrayList<Kredyt> kredyty = new ArrayList<Kredyt>();
 
     public Bank(String nazwa,Adres adres) {
-        this.nazwa = nazwa;
-        this.adres = adres;
+        super(nazwa,adres);
     }
+
+    @Override
+    public void wypisz() {
+        System.out.println("Posiadane sklepy");
+        this.sklepy();
+        System.out.println("Posiadane Kredyty");
+        this.informacjeOKredytach();
+    }
+
     public void informacjeOKredytach(){
         for (Kredyt k:kredyty
              ) {
@@ -78,6 +84,13 @@ public class Bank implements Serializable {
         }
         System.out.println("Suma kredytów dla miejscowosci: "+adres.getMiejscowosc()+" wynosi: "+ wynik);
 
+    }
+    public void sklepy(){
+        for (Sklep s:sklepy
+             ) {
+            System.out.println(s.getNazwa());
+            s.getAdres().wypiszAdres();
+        }
     }
     public void sumaKredytów(){
         int wynik = 0;

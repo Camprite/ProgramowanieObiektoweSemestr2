@@ -2,15 +2,21 @@ import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Sklep  implements Serializable  {
-    private String nazwa;
-    private Adres adres;
+public class Sklep extends Budynek  implements Serializable  {
     private ArrayList<Produkt> produkty = new ArrayList<Produkt>();
 
 
     public Sklep(String nazwa, Adres adres){
-        this.nazwa = nazwa;
-        this.adres = adres;
+        super(nazwa,adres);
+    }
+    @Override
+    public void wypisz(){
+        System.out.println("Produkty w sklepie");
+        for (Produkt p:produkty
+             ) {
+            p.wypiszProdukt();
+        }
+
     }
     public void dodajProdukt(Produkt produkt, int ilosc){
         Produkt produktTemp = produkt;
@@ -37,10 +43,10 @@ public class Sklep  implements Serializable  {
     }
 
     public String getNazwa() {
-        return nazwa;
+        return this.absgetNazwa();
     }
 
     public Adres getAdres() {
-        return adres;
+        return this.absgetAdres();
     }
 }

@@ -24,4 +24,9 @@ public class Produkt implements Serializable  {
     public String getNazwa() {
         return nazwa;
     }
+    public void wypiszProdukt(){
+        System.out.println("Nazwa: "+this.nazwa);
+        System.out.println("Cena: "+this.cena);
+        System.out.println("Ilosc w sklepie: "+this.iloscWSklepie);
+    }
 }

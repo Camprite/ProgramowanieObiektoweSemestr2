@@ -60,5 +60,9 @@ public class Main {
         Bank input =(Bank) in.readObject();
         System.out.println("FROM FILE");
         input.informacjeOKredytach();
+        System.out.println("TREEST");
+        input.wypisz();
+        System.out.println("Wypisz2");
+        sklep1.wypisz();
     }
 }
