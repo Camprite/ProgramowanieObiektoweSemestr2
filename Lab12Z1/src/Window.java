@@ -12,24 +12,23 @@ public class Window extends JFrame {
 
     public Window() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500,500);
+        setSize(500, 500);
         setLayout(new FlowLayout());
         add(input = new JLabel("Imie"));
         add(text = new JTextField(10));
         add(bOK = new JButton("Ok"));
         add(bClose = new JButton("Zamknij"));
 
-        getContentPane().setBackground(new Color(0,0,0));
+        getContentPane().setBackground(new Color(0, 0, 0));
 
         bOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tekst = text.getText();
-                for (char c: tekst.toCharArray())
-                      {
-                        if(c)
+                for (char c : tekst.toCharArray()) {
+
                 }
-                JOptionPane.showMessageDialog(null,"Podane imie to \t "+ text.getText());
+                JOptionPane.showMessageDialog(null, "Podane imie to \t " + text.getText());
             }
         });
         bClose.addActionListener(new ActionListener() {
