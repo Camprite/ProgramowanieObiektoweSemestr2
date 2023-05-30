@@ -18,8 +18,8 @@ public class Window extends JFrame implements MouseListener {
     int y0;
     int x1;
     int y1;
-    int wybor = 2;
-    int kolor = 1;
+    int wybor = 0;
+    Color kolor ;
 
     public Window() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,11 +30,22 @@ public class Window extends JFrame implements MouseListener {
 
         add(lbKol1 = new JRadioButton("Czerwony"));
         add(lbKol2 = new JRadioButton("Niebieski"));
-        add(lbKol3 = new JRadioButton("Czarny"));
+        add(lbKol3 = new JRadioButton("Zielony"));
         add(rbLinia = new JRadioButton("Linia"));
         add(rbProstokat = new JRadioButton("Prostokat"));
         add(rbElipsa = new JRadioButton("Elipsa"));
         add(obszar);
+        ButtonGroup bg1 = new ButtonGroup();
+        ButtonGroup bg2 = new ButtonGroup();
+
+        bg1.add(lbKol1);
+        bg2.add(rbLinia);
+
+        bg1.add(lbKol2);
+        bg2.add(rbProstokat);
+
+        bg1.add(lbKol3);
+        bg2.add(rbElipsa);
 
         add(bCzysc = new JButton("Czysc"));
         addMouseListener(this);
@@ -71,9 +82,9 @@ bCzysc.addActionListener(new ActionListener() {
         if(rbProstokat.isSelected()){wybor = 2; };
         if(rbElipsa.isSelected()){wybor = 3; };
 
-        if(lbKol1.isSelected()){wybor = 1; };
-        if(lbKol2.isSelected()){wybor = 2; };
-        if(lbKol3.isSelected()){wybor = 3; };
+        if(lbKol1.isSelected()){kolor = new Color(255,0,0); };
+        if(lbKol2.isSelected()){kolor = new Color(0,0,255); };
+        if(lbKol3.isSelected()){kolor = new Color(0,255,0); };
 
     if(wybor == 2){prostokat(getGraphics());}
     if(wybor == 3){elipsa(getGraphics());}
@@ -96,17 +107,38 @@ bCzysc.addActionListener(new ActionListener() {
     public void elipsa(Graphics g){
         System.out.println("elipsa");
 
-        g.drawOval(x0,y0,x1-x0,y1-y0);
+        g.setColor(kolor);
+
+        if(x0-x1>0 && y0-y1<0){
+            System.out.println("Cw:3");
+            g.drawOval(x1,y0,x0-x1,y1-y0);
+
+        }else if(x0-x1<0 && y0-y1<0){
+            g.drawOval(x0,y0,x1-x0,y1-y0);
+            System.out.println("Cw:4");
+
+        }else if(x0-x1<0 && y0-y1>0){
+            g.drawOval(x0,y1,x1-x0,y0-y1);
+            System.out.println("Cw:1");
+
+        }else if(x0-x1>0 && y0-y1>0){
+            System.out.println("Cw:2"); //git
+            g.drawOval(x1,y1,(x0-x1),y0-y1);
+        }
     }
     public void prostokat(Graphics g){
         System.out.println("prostokat");
 
-        g.drawRect(x0,y0,x1-x0,y1-y0);
+        g.setColor(kolor);
+        g.fillRect(x0,y0,x1-x0,y1-y0);
+//        g.drawRect(x0,y0,x1-x0,y1-y0);
     }
     public void linia(Graphics g){
         System.out.println("linia");
 
+        g.setColor(kolor);
         g.drawLine(x0,y0,x1,y1);
+
     }
 
 
