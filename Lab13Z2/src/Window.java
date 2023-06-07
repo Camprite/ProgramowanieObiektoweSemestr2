@@ -75,15 +75,21 @@ public class Window extends JFrame {
         int valX = 50;
         int valX1 = 0;
         int valY = 550;
+        int valYDefault = 550;
         int valY1 = 0;
+        int previous = 0;
         for (int i : lista
         ) {
+
             System.out.println(i);
+
+                valY1 = valYDefault - i;
+
             valX1 = valX + skok;
-            valY1 = valY - i;
             g.drawLine(valX, valY, valX1, valY1);
             valX = valX1;
             valY = valY1;
+
 
         }
         ;
